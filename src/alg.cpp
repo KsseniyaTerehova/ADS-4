@@ -26,26 +26,26 @@ int countPairs3(int *arr, int len, int value) {
   for (int i = 0; i < len - 1; i++) {
     int s = i; f = len;
     while (1 < f - s) {
-      int m = (s + f) / 2;
-      if (arr[i] + arr[m] == value) {
+      int mid = (s + f) / 2;
+      if (arr[i] + arr[mid] == value) {
         count++;
-        int r = m + 1;
+        int r = mid + 1;
         while (arr[i] + arr[r] == value && r < f) {
           count++;
           r++;
         }
-        r = m - 1;
+        r = mid - 1;
         while (arr[i] + arr[r] == value && r > s) {
           count++;
           r--;
         }
         break;
       }
-      if (arr[i] + arr[m] > value) {
-        f = m;
+      if (arr[i] + arr[mid] > value) {
+        f = mid;
       }
       else {
-        s = m;
+        s = mid;
       }
     }
   }
