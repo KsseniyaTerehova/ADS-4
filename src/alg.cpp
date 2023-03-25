@@ -24,28 +24,28 @@ int countPairs2(int* arr, int len, int value) {
 int countPairs3(int* arr, int len, int value) {
   int count = 0;
   for (int i = 0; i < len - 1; i++) {
-    int start = i, end = len;
-    while (1 < end - start) {
-      int mid = (start + end) / 2;
+    int s = i, f = len;
+    while (1 < f - s) {
+      int mid = (s + f) / 2;
       if (arr[i] + arr[mid] == value) {
         count++;
         int r = mid + 1;
-        while (arr[i] + arr[r] == value && r < end) {
+        while (arr[i] + arr[r] == value && r < f) {
           count++;
           r++;
         }
         r = mid - 1;
-        while (arr[i] + arr[r] == value && r > start) {
+        while (arr[i] + arr[r] == value && r > s) {
           count++;
           r--;
         }
         break;
       }
       if (arr[i] + arr[mid] > value) {
-        end = mid;
+        f = mid;
       }
       else {
-        start = mid;
+        s = mid;
       }
     }
   }
